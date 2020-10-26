@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title th:text="${categories.type} + ' Cereal'">Sugar Cereal</title>
+    <link rel="stylesheet" href="/layout.css" />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+
+  <body>
+    <header class="header">
+      <ul class="nav-bar">
+        <li class="nav"><a href="/">Home</a></li>
+        <li class="nav"><a href="/hashtags">Hashtags</a></li>
+      </ul>
+      <h1 th:text="${categories.type} + ' Cereal'">Sugary Cereal</h1>
+      <form>
+        <input type="text" name="text" placeholder="Search.." />
+        <input type="submit" name="submit" value="Search" />
+      </form>
+    </header>
+    <div class="cereal-body">
+    <div th:each="review: ${categories.cereals}" >
+      <a th:href="'/review/'+ ${review.getId()}">
+      <div class="apple-jacks cereal">
+        <h3 th:text="${review.cerealName}" class="ribbon">Apple Jacks</h3>
+        <img th:src="'/images/'+ ${review.cerealName} + '.png'" alt="Photo of Cereal"/>
+        <p class="ribbon">Click here to learn more and view product reviews.</p>
+      </div>
+    </a>
+  </div>
+    </div>
+    <footer>&copy; Cap'n'Coders 2020</footer>
+  </body>
+</html>

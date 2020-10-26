@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title th:text="${reviews.cerealName}">Apple Jacks</title>
+    <link rel="stylesheet" href="/layout.css"/>
+    <link rel="stylesheet" href="/style.css"/>
+</head>
+
+<body>
+<header class="header">
+    <ul class="nav-bar">
+        <li class="nav"><a href="/">Home</a></li>
+        <li class="nav"><a href="/hashtags">Hashtags</a></li>
+    </ul>
+    <h1 th:text="${reviews.cerealName}">Apple Jacks</h1>
+    <form>
+        <input type="text" name="text" placeholder="Search.."/>
+        <input type="submit" name="submit" value="Search"/>
+    </form>
+</header>
+<div class="cereal-page-body">
+    <figure>
+        <img th:src="'/images/'+ ${reviews.cerealName} + '.png'" src="/templates/images/AppleJacks 3D.png"
+             alt="Image of box"/>
+    </figure>
+
+    <figure class="nutrition-label">
+        <img th:src="'/images/'+ ${reviews.cerealName} + '-nutrition.png'" alt="Image of nutrition label"/>
+    </figure>
+    <div class="page-text">
+        <h2>Company Description</h2>
+        <article th:text="${reviews.description}">
+            Apple Jacks is a crunchy, sweetened multi-grain cereal with apple and cinnamon." Apple Jacks is one of
+            the top four cereal brands marketed within stores and is most heavily marketed on Kellogg's internet
+            platform.
+        </article>
+        <h2>World of Cereals Review</h2>
+        <article th:text="${reviews.review}" class="review">
+            John Doe: ★★ <br> Apple Jacks is whack!!!
+        </article>
+    </div>
+
+    <div class="opinion-section">
+
+        <h2>Have an Opinion? Leave one Below!</h2>
+        <div class="opinions forms">
+            <article class="hashtags opinion">
+                <form th:action="'/review/'+${reviews.id}" method="post">
+                    <label for="hashtag-name-input"></label>
+                    <input placeholder="Add New Hashtag" type="text" name="hashtagName" id="hashtag-name-input">
+                    <button type="submit">Submit</button>
+                </form>
+
+            </article>
+            <article class="comments opinion">
+                <form th:action="'/review/'+${reviews.id}" method="post" th:object="${reviews.comments}" class="opinion">
+                    <label for="comments-input"></label>
+                    <label for="author-input"></label>
+                    <input placeholder="Your Name" type="text" name="authorText" id="author-input" class="your-name">
+                    <input placeholder="Add New Comment" type="text" name="commentText" id="comments-input">
+                    <div class="stars">
+                        <input id="star-5" value="★★★★★" type="radio" name="rating"/>
+                        <label for="star-5"></label>
+                        <input id="star-4" value="★★★★" type="radio" name="rating"/>
+                        <label for="star-4"></label>
+                        <input id="star-3" value="★★★" type="radio" name="rating"/>
+                        <label for="star-3"></label>
+                        <input id="star-2" value="★★" type="radio" name="rating"/>
+                        <label for="star-2"></label>
+                        <input id="star-1" value="★" type="radio" name="rating"/>
+                        <label for="star-1"></label>
+                    </div>
+                    <button class="comment-button" type="submit">Submit</button>
+                </form>
+
+            </article>
+            <div class="opinions list">
+                <section> <p th:each="hashtag: ${reviews.hashtag}" th:text="${hashtag.name}" class="hashtags-display" >Hashtaggy</p></section>
+                <section><p th:each="comment : ${reviews.comments}" th:text="${comment.author} + ':   ' + ${comment.comment} + ${comment.rating}" class="comments"></p></section>
+            </div>
+        </div>
+    </div>
+</div>
+<footer>&copy; Cap'n'Coders 2020</footer>
+</body>
+
+</html>

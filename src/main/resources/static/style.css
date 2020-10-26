@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css2?family=Medula+One&family=Roboto&display=swap");
+
+:root {
+  --background: rgba(172, 172, 172, 0.616);
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a,  a:visited, a header:visited {
+  text-decoration: none;
+  color: white;
+}
+
+ul a:hover {
+  background-color: rgba(0, 0, 0, 0.719);
+  border-radius: 5px;
+  transition: background-color .5s;
+}
+
+header {
+  background-position: center;
+  color: white;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background: darkgoldenrod;
+  background-image: url("images/image.png");
+  background-size: cover;
+}
+
+.ribbon, .nav-bar {
+  background-color: var(--background);
+}
+
+h3,
+p {
+  color: black;
+}
+
+h1 {
+  text-shadow: 2px 2px black;
+  font-family: "Medula One", cursive;
+  text-align: center;
+}
+
+ul, article{
+  border-radius: 5px;
+}
+
+.page-text, .opinion-section{
+  background-color: var(--background);
+  border-radius: 5px;
+  padding: 10px;
+
+}
+
+
+footer {
+  font-family: "Medula One", cursive;
+  text-align: center;
+  color: white;
+}
+
+.hashtag-body li {
+  list-style-type: none;
+  padding: 10px;
+}
+.category{
+  font-size: 175%;
+}
+
+.your-name:hover{
+
+}
+
+.stars {
+  display: inline-block;
+}
+
+.stars input {
+  display: none;
+}
+
+.stars label {
+  float: right;
+  font-size: 24px;
+  color: #444;
+  transition: all .2s;
+  padding-right: 5px;
+  margin-right: 10px;
+}
+
+
+.stars label:before {
+  content: '\2605';
+}
+
+.stars input:checked ~ label:before {
+  color: gold;
+  transition: all .25s;
+}
+
+.stars label:hover {
+  transform: scale(1.3);
+}
+
+
+

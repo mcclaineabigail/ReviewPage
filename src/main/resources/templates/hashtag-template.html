@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/layout.css" />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+
+  <body>
+    <header class="header">
+      <ul class="nav-bar">
+        <li><a href="/">Home</a></li>
+      </ul>
+      <h1 class="big-title hashtag-title">Welcome to the World of Hashtags!</h1>
+      <form>
+        <input type="text" name="text" placeholder="Search.." />
+        <input type="submit" name="submit" value="Search" />
+      </form>
+    </header>
+    <div class="hashtag-body">
+      <div class="hashtag">
+          <h3 class="ribbon">Hashtags</h3>
+          <article>
+            <form action="/hashtags" method="post">
+              <label for="hashtag-name-input"></label>
+              <input  placeholder="Add New Hashtag" type="text" name="hashtagName" id="hashtag-name-input">
+              <button type="submit">Submit</button>
+            </form>
+            <ul class="hashtag-list" >
+              <li th:each= "hashtag : ${hashtags}" th:text="${hashtag.name}"></li>
+            </ul>
+          </article>
+          <p class="ribbon"></p>
+
+      </div>
+    </div>
+
+
+    <footer>&copy; Cap'n'Coders 2020</footer>
+  </body>
+</html>

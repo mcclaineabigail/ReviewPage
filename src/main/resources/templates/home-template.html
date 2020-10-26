@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/layout.css" />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+
+  <body>
+    <header class="header">
+      <ul class="nav-bar">
+        <li class="nav"><a href="/">Home</a></li>
+        <li class="nav"><a href="/hashtags">Hashtags</a></li>
+      </ul>
+      <h1 class="big-title">Welcome to the World of Cereals!</h1>
+      <form>
+        <input type="text" name="text" placeholder="Search.." />
+        <input type="submit" name="submit" value="Search" />
+      </form>
+    </header>
+    <div class="home-body">
+      <div th:each= "category : ${categories}" class="healthy cereal">
+        <a th:href="'/categories/'+ ${category.getId()}">
+          <h3 th:text="${category.type}" class="ribbon category">Category</h3>
+          <img class="main-pic" th:src="'/images/'+ ${category.type} + '.png'" alt="Photo of Cereal"/>
+          <p class="ribbon">To view more cereals in this category, click here!</p>
+        </a>
+      </div>
+    </div>
+
+
+    <footer>&copy; Cap'n'Coders 2020</footer>
+  </body>
+</html>
